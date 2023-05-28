@@ -1,0 +1,9 @@
+
+OrdererOrgs:
+  - Name: Orderer
+    Domain: doctor.com
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: orderer
+        SANS:
+          - localhost

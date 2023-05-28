@@ -1,0 +1,52 @@
+PeerOrgs:
+- Domain: docorg.doctor.com
+  EnableNodeOUs: true
+  Name: docorg
+  Template:
+    Count: 1
+    SANS:
+    - localhost
+  Users:
+    Count: 1
+- Domain: docorg.doctor.com
+  EnableNodeOUs: true
+  Name: docorg
+  Template:
+    Count: 2
+  Users:
+    Count: 1
+- Domain: docorg.doctor.com
+  EnableNodeOUs: true
+  Name: docorg
+  Template:
+    Count: 1
+  Users:
+    Count: 1
+- Domain: docorg.doctor.com
+  EnableNodeOUs: true
+  Name: docorg
+  Template:
+    Count: 2
+  Users:
+    Count: 1
+- Domain: docorg.doctor.com
+  EnableNodeOUs: true
+  Name: docorg
+  Template:
+    Count: 3
+  Users:
+    Count: 1
+- Domain: docorg.doctor.com
+  EnableNodeOUs: true
+  Name: docorg
+  Template:
+    Count: 1
+  Users:
+    Count: 1
+- Domain: docorg.doctor.com
+  EnableNodeOUs: true
+  Name: docorg
+  Template:
+    Count: 2
+  Users:
+    Count: 1
