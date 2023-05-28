@@ -2,7 +2,7 @@ networks:
   test:
     name: fabric_test
 services:
-  couchdb1:
+  couchdb0:
     container_name: couchdb${PEER_NUMBER}
     environment:
     - COUCHDB_USER=admin
@@ -14,7 +14,7 @@ services:
     - test
     ports:
     - ${COUCHDB_PORT}:5984
-  peer1.docorg.doctor.com:
+  peer0.docorg.doctor.com:
     depends_on:
     - couchdb${PEER_NUMBER}
     environment:

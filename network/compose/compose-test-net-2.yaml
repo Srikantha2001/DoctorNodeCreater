@@ -21,9 +21,9 @@ services:
     - ../scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
     - ./docker/peercfg:/etc/hyperledger/peercfg
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
-  peer1.docorg.doctor.com:
+  peer0.docorg.doctor.com:
     command: peer node start
-    container_name: peer1.docorg.doctor.com
+    container_name: peer0.docorg.doctor.com
     environment:
     - FABRIC_LOGGING_SPEC=INFO
     - CORE_PEER_TLS_ENABLED=true
@@ -31,18 +31,18 @@ services:
     - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
     - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
     - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
-    - CORE_PEER_ID=peer1.docorg.doctor.com
-    - CORE_PEER_ADDRESS=peer1.docorg.doctor.com:${PEER_PORT}
+    - CORE_PEER_ID=peer0.docorg.doctor.com
+    - CORE_PEER_ADDRESS=peer0.docorg.doctor.com:${PEER_PORT}
     - CORE_PEER_LISTENADDRESS=0.0.0.0:${PEER_PORT}
-    - CORE_PEER_CHAINCODEADDRESS=peer1.docorg.doctor.com:${NEXT_PEER_PORT_CC}
+    - CORE_PEER_CHAINCODEADDRESS=peer0.docorg.doctor.com:${NEXT_PEER_PORT_CC}
     - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:${NEXT_PEER_PORT_CC}
-    - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.docorg.doctor.com:${PEER_PORT}
-    - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.docorg.doctor.com:${PEER_PORT}
+    - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.docorg.doctor.com:${PEER_PORT}
+    - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.docorg.doctor.com:${PEER_PORT}
     - CORE_PEER_LOCALMSPID=DocOrgMSP
     - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp
-    - CORE_OPERATIONS_LISTENADDRESS=peer1.docorg.doctor.com:${OPER_LISTEN_PORT}
+    - CORE_OPERATIONS_LISTENADDRESS=peer0.docorg.doctor.com:${OPER_LISTEN_PORT}
     - CORE_METRICS_PROVIDER=prometheus
-    - CHAINCODE_AS_A_SERVICE_BUILDER_CONFIG={"peername":"peer1docorg"}
+    - CHAINCODE_AS_A_SERVICE_BUILDER_CONFIG={"peername":"peer0docorg"}
     - CORE_CHAINCODE_EXECUTETIMEOUT=300s
     image: hyperledger/fabric-peer:latest
     labels:
@@ -53,8 +53,8 @@ services:
     - ${PEER_PORT}:${PEER_PORT}
     - ${OPER_LISTEN_PORT}:${OPER_LISTEN_PORT}
     volumes:
-    - ../organizations/peerOrganizations/docorg.doctor.com/peers/peer1.docorg.doctor.com:/etc/hyperledger/fabric
-    - peer1.docorg.doctor.com:/var/hyperledger/production
+    - ../organizations/peerOrganizations/docorg.doctor.com/peers/peer0.docorg.doctor.com:/etc/hyperledger/fabric
+    - peer0.docorg.doctor.com:/var/hyperledger/production
     working_dir: /root
 volumes:
-  peer1.docorg.doctor.com: null
+  peer0.docorg.doctor.com: null

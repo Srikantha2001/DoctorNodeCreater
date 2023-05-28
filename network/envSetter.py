@@ -145,7 +145,7 @@ modifiedCLI ={
 compose_data['volumes']={'peer'+str(env_dict['peer_number'])+'.docorg.doctor.com' : None}
 compose_data['services']={'cli':modifiedCLI}
 compose_data['services']['peer'+str(env_dict['peer_number'])+'.docorg.doctor.com'] =newpeer
-config_data['PeerOrgs'].append(new_peer_config)
+config_data['PeerOrgs'][0] = new_peer_config
 compose_data_couch['services']={'couchdb'+str(env_dict['peer_number']):newcouch}
 compose_data_couch['services']['peer'+str(env_dict['peer_number'])+'.docorg.doctor.com'] = newpeercouch
 
