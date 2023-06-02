@@ -118,6 +118,39 @@ function createOrgs() {
 
   fi
 
+  if [ "$CRYPTO" == "Certificate Authorities" ]; then
+    infoln "Generating certificates using Fabric CA"
+    ${CONTAINER_CLI_COMPOSE} -f compose/$COMPOSE_FILE_CA -f compose/$CONTAINER_CLI/${CONTAINER_CLI}-$COMPOSE_FILE_CA up -d 2>&1
+
+    . organizations/fabric-ca/registerEnroll.sh
+
+    while :
+    do
+      if [ ! -f "organizations/fabric-ca/docorg/tls-cert.pem" ]; then
+        sleep 1
+      else
+        break
+      fi
+    done
+
+    if [ ${PEER_NUMBER} == '0' ]; then
+      infoln "Creating docorg Identities"
+      createDocOrg
+      # infoln "Creating Orderer Org Identities"
+      # createOrderer
+    fi
+
+    createDocPeer
+
+    if [ ${PEER_NUMBER} == '0' ]; then
+      # infoln "Creating docorg Identities"
+      # createDocOrg
+      infoln "Creating Orderer Org Identities"
+      createOrderer
+    fi
+
+  fi
+
   infoln "Generating CCP files for docorg "
   ./organizations/ccp-generate.sh
 }

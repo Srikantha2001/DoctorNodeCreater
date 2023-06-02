@@ -160,7 +160,7 @@ with open('./compose/compose-couch.yaml', 'w') as file:
     yaml.dump(compose_data_couch, file)
 
 
-subprocess.run(shlex.split('./network.sh up'))
+subprocess.run(shlex.split('./network.sh up -ca'))
 
 env_dict['peer_number']+=1
 env_dict['peer_port']+=2

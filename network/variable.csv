@@ -1,5 +1,5 @@
 ,KeyColumn,DataColumn
-0,peer_number,1
-1,peer_port,10002
-2,listen_port,9445
-3,couchdb_port,15001
+0,peer_number,0
+1,peer_port,10000
+2,listen_port,9444
+3,couchdb_port,15000
