@@ -58,6 +58,8 @@ newpeer = {
         'CORE_METRICS_PROVIDER=prometheus',
         'CHAINCODE_AS_A_SERVICE_BUILDER_CONFIG={"peername":"peer'+str(env_dict['peer_number'])+'docorg"}',
         'CORE_CHAINCODE_EXECUTETIMEOUT=300s', 
+        'CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock',
+        'CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test',
     ],
     'image': 'hyperledger/fabric-peer:latest',
     'labels': {
@@ -71,6 +73,8 @@ newpeer = {
     'volumes': [
         '../organizations/peerOrganizations/docorg.doctor.com/peers/peer'+str(env_dict['peer_number'])+'.docorg.doctor.com:/etc/hyperledger/fabric',
         'peer'+str(env_dict['peer_number'])+'.docorg.doctor.com:/var/hyperledger/production',
+        './docker/peercfg:/etc/hyperledger/peercfg',
+        '${DOCKER_SOCK}:/host/var/run/docker.sock',
     ],
     'working_dir': '/root',
 }
