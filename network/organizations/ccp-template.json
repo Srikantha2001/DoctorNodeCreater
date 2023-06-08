@@ -24,7 +24,7 @@
     },
     "peers": {
         "peer${PEER_NUMBER}.${ORG}.doctor.com": {
-            "url": "grpcs://localhost:${PPORT}",
+            "url": "grpcs://peer${PEER_NUMBER}.${ORG}.doctor.com:${PPORT}",
             "tlsCACerts": {
                 "pem": "${PEERPEM}"
             },
@@ -36,7 +36,7 @@
     },
     "certificateAuthorities": {
         "ca.${ORG}.doctor.com": {
-            "url": "https://localhost:${CAPORT}",
+            "url": "https://ca.${ORG}.doctor.com:${CAPORT}",
             "caName": "ca-${ORG}",
             "tlsCACerts": {
                 "pem": ["${CAPEM}"]

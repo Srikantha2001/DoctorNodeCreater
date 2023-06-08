@@ -12,6 +12,7 @@ function json_ccp {
         -e "s/\${CAPORT}/$3/" \
         -e "s#\${PEERPEM}#$PP#" \
         -e "s#\${CAPEM}#$CP#" \
+        -e "s/\${PEER_NUMBER}/$6/" \
         organizations/ccp-template.json
 }
 
@@ -31,6 +32,7 @@ PPORT=${PEER_PORT}
 CAPORT=7054
 PEERPEM=organizations/peerOrganizations/docorg.doctor.com/tlsca/tlsca.docorg.doctor.com-cert.pem
 CAPEM=organizations/peerOrganizations/docorg.doctor.com/ca/ca.docorg.doctor.com-cert.pem
+PEERNUM=${PEER_NUMBER}
 
-echo "$(json_ccp $ORG $PPORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/docorg.doctor.com/connection-docorg.json
+echo "$(json_ccp $ORG $PPORT $CAPORT $PEERPEM $CAPEM $PEERNUM)" > organizations/peerOrganizations/docorg.doctor.com/connection-docorg.json
 echo "$(yaml_ccp $ORG $PPORT $CAPORT $PEERPEM $CAPEM)" > organizations/peerOrganizations/docorg.doctor.com/connection-docorg.yaml
